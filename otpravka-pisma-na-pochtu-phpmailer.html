@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Отправка письма на почту (PHPMailer)</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1815">
+					<h1 class="article__title title">Отправка письма на почту (PHPMailer)</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Шаблон содержит функционал позволяющий отправлять письма. Работает на основе модуля <a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="noreferrer noopener">PHPMailer</a></p>
+
+
+
+						<h2>Подключение функционала</h2>
+
+
+
+						<p><strong>[ФАЙЛЫ]</strong> Копируем папку <strong>src/componetns/sendmail</strong> в папку <strong>src/files/sendmail</strong><br><strong>[HTML] </strong>Создаем форму, указав в атрибуте <strong>action</strong> адрес <strong>files/sendmail/sendmail.php</strong>. Можна воспользоваться сниппетом <strong>formemail</strong>. Пример:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"files/sendmail/sendmail.php"</span> <span class="attribute">method</span>=<span class="value">"POST"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"form[email]"</span> <span class="attribute">data-error</span>=<span class="value">"Error"</span> <span class="attribute">placeholder</span>=<span class="value">"E-mail"</span> <span class="attribute">class</span>=<span class="value">"input"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span>Send<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></pre>
+
+
+
+						<p><strong>[JS]</strong> Также, при необходимости, можно добавить <a rel="noreferrer noopener" href=".rabota-s-formami.html" target="_blank">функционал валидации и отправки формы</a></p>
+
+
+
+						<p><strong>[PHP]</strong> Все настройки касательно отправки данных на почту проводятся в файле <strong>files/sendmail/sendmail.php</strong> согласно документации <a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="noreferrer noopener">модуля PHPMailer</a></p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

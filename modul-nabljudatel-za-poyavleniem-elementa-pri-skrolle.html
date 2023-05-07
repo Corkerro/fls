@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль «Наблюдатель» за появлением элементов при прокрутке страницы (скролле)</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item">
+					<h1 class="article__title title">Модуль &#171;Наблюдатель&#187; за появлением элементов при
+						прокрутке страницы (скролле)</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Модуль &#171;Наблюдатель&#187; можно использовать для решения самых разных задач: анимация
+							элементов при скролле, подсветка активного пункта меню (используется в модуле
+							&#171;Прокрутка к нужному блоку&#187;) и многих других.</p>
+
+
+
+						<p>Суть работы наблюдателя заключается в добавлении класса <strong>_watcher-view</strong>
+							элементу в момент его появлении в вьюпорте (экране) при скролле а также при открытии
+							страницы. И, соответственно, убран при уходе объекта из вьюпорта.</p>
+
+
+
+						<h2>Подключение модуля</h2>
+
+
+
+						<p><strong>[HTML]</strong> Для объекта, за которым нужно установить наблюдение, следует добавить
+							атрибут <strong>data-watch</strong></p>
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-watch</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+								...
+							<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку <strong>import ‘./libs/watcher.js’</strong></p>
+						<h5>Дополнительные настройки:</h5>
+						<ul>
+							<li><strong>data-watch-root=’селектор’</strong> — селектор родителя внутри которого наблюдать за объектом. По умолчанию &lt;body&gt;</li>
+							<li><strong>data-watch-margin=’значение’ </strong>— отступ от родителя. Указываем значение в PX или в %</li>
+							<li><strong>data-watch-threshold=’значение’</strong> — процент показа объекта для срабатывания. Где 1 = 100% показ объекта. Указываем только целые или десятичные числа, по умолчанию 0. Может содержать массив значений через запятую.</li>
+							<li><strong>data-watch-once</strong> — наблюдать только один раз. То есть класс к объекту добавится только один раз и не будет убран при уходе объекта из вьюпорта.</li>
+						</ul>
+						<em>Пример — класс добавится только один раз, при появлении объекта на 50% его высоты:</em>
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-watch-threshold</span>=<span class="value">"0.5"</span> <span class="attribute">data-watch-once</span> <span class="attribute">data-watch</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+								...
+							<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+						<h2>События</h2>
+						<p>После каждом срабатывании наблюдателя, возникает событие <strong>watcherCallback</strong>, его можно отловить в любой части кода:</p>
+						<pre class="wp-block-code">
+							<code class="javascript">
+							document.addEventListener(<span class="string">"watcherCallback"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> {</span>
+								<span class="comment">// Полная информация от наблюдателя</span>
+								<span class="keyword">const</span> entry = e.detail.entry;
+								<span class="comment">// Наблюдаемый объект</span>
+								<span class="keyword">const</span> targetElement = entry.target;
+								<span class="function">}<span>)</span>;</span>
+							</code>
+						</pre>
+						<h2>Расположение и дополнительные данные</h2>
+
+
+
+						<p>Функционал находится в файле <strong>js/libs/watcher.js</strong>. Название класса<strong> ScrollWatcher</strong>. Модуль построен на основе <a rel="noreferrer noopener" href="https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API" target="_blank">Intersection Observer API</a>.</p>
+
+
+
+						<p>Модуль снабжен системой <strong>FLS</strong> и будет сообщать о своих действиях в консоль браузера</p>
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

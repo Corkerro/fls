@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль «Прокрутка к нужному блоку». Плавная навигация по странице.</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-615">
+					<h1 class="article__title title">Модуль «Прокрутка к нужному блоку». Плавная навигация по странице.
+					</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>В данном модуле реализован плавный скролл после клика по ссылке (кнопке) до нужного блока на
+							странице. Если в адресе страницы будет передан хеш и блок с таким селектором будет найден на
+							странице, прокрутка к блоку произойдет автоматически. Также, модуль позволяет построить
+							навигацию по странице с добавлением класса текущему пункту навигации (пункту меню) при
+							скролле к определенному блоку.</p>
+
+
+
+						<h2>Подключение функционала</h2>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку
+							<strong>flsScroll.pageNavigation();</strong>
+						</p>
+
+
+
+						<h2>Использование функционала</h2>
+
+
+
+						<p><strong>[HTML]</strong> К элементам навигации (пунктам меню), либо к произвольному объекту,
+							добавляем HTML-атрибут <strong>data-goto</strong> а в качестве значения указываем CSS
+							селектор блока до которого нужно прокрутить: </p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-goto</span>=<span class="value">".имя класса блока"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Пункт навигации<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+		
+		<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-goto</span>=<span class="value">"#id блока"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Пункт навигации<span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+
+
+
+						<p>Если нужно чтобы скролл учитывал шапку (не докручивал на высоту шапки, используется при
+							фиксированных шапках) нужно добавить к объекту навигации атрибут
+							<strong>data-goto-header</strong>:
+						</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-goto-header</span> <span class="attribute">data-goto</span>=<span class="value">".имя класса блока"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Пункт навигации<span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+
+
+
+						<p>Если нужно чтобы скролл не докручивал до блока на указанную высоту необходимо добавить к
+							объекту навигации атрибут <strong>data-goto-top</strong> а в качестве значения указать число
+							— необходимую высоту:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-goto-top</span>=<span class="value">"30"</span> <span class="attribute">data-goto</span>=<span class="value">"#id блока"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Пункт навигации<span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+
+
+
+						<p> <strong>data-goto-top</strong> можно совмещать с <strong>data-goto-header</strong>, тогда
+							значение data-goto-top добавится к высоте шапки.</p>
+
+
+
+						<h3>Добавление класса к текущему пункту навигации</h3>
+
+
+
+						<p>Для включения функционала добавления класса подключаем модуль наблюдатель:</p>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку
+							<strong>import ‘./libs/watcher.js’</strong><br><strong>[HTML]</strong> Для блоков к которым
+							прокручивается страница добавляем атрибут <strong>data-watch </strong>со значением
+							<strong>navigator</strong>:
+						</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-goto</span>=<span class="value">".some-section"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Пункт навигации<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+		...
+		<span class="tag">&lt;<span class="title">section</span> <span class="attribute">data-watch</span>=<span class="value">"navigator"</span> <span class="attribute">class</span>=<span class="value">"some-section"</span>&gt;</span><span class="tag">&lt;/<span class="title">section</span>&gt;</span></code></pre>
+
+
+
+						<p>После этого, при прокрутке к облоку (объекту) навигации, к соответствующему пункту навигации
+							будет добавлен класс <strong>_navigator-active</strong></p>
+
+
+
+						<h3>Прокрутка к нужному блоку по хешу (при открытии страницы)</h3>
+
+
+
+						<p>Для того чтобы прокрутить страницу к нужному блоке при открытии страницы необходимо добавить
+							к адресу хеш содержащий <strong>имя класса нужного блока</strong>.</p>
+
+
+
+						<p><em>Пример адресной строки и нужного блока:</em></p>
+
+
+
+						<pre class="wp-block-code"><code class="ruby"><span class="symbol">https:</span>/<span class="regexp">/template.fls.guru/index</span>.html<span class="comment">#some-section</span></code></pre>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">section</span> <span class="attribute">class</span>=<span class="value">"some-section"</span>&gt;</span>
+		...
+		<span class="tag">&lt;/<span class="title">section</span>&gt;</span></code></pre>
+
+
+
+						<h3>Добавление функционала, плавная прокрутка на iOS</h3>
+
+
+
+						<p>По умолчанию, прокрутка выполняется методом scrollTo() с параметром behavior: «smooth» без
+							применения дополнительных плагинов. Но это ограничивает функционал этого модуля — нельзя
+							указать скорость прокрутки, а также могут возникнуть проблемы в <a rel="noreferrer noopener" href="https://caniuse.com/?search=scrollTo" target="_blank">некоторых версия браузеров
+								на iOS</a>. Для решения всех проблем, можно подключить дополнительный плагин
+							SmoothScroll, сделать это можно в файле <strong>js/files/scroll/gotoblock.js</strong>
+							раскомментировав строку <strong>import SmoothScroll from ‘smooth-scroll’;</strong>
+							дальнейшее переключение прокрутки на плагин произойдет автоматически.</p>
+
+
+
+						<p>При работе с плагином появляется возможность указать скорость прокрутки, для этого элементу
+							навигации нужно добавить атрибут <strong>data-goto-speed</strong> и указать число означающее
+							количество миллисекунд за которые совершится прокрутка (1000 = 1 секунда), по умолчанию 500.
+						</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-goto-speed</span>=<span class="value">"1000"</span> <span class="attribute">data-goto</span>=<span class="value">".some-section"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Пункт навигации<span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+
+
+
+						<h2>Расположение и дополнительные данные</h2>
+
+
+
+						<p>Функционал находится в <strong>js/files/scroll/scroll.js</strong>. Название функции
+							<strong>pageNavigation()</strong>. Вспомогательный модуль прокрутки
+							<strong>gotoblock</strong> находится в <strong>js/files/scroll/gotoblock.js</strong>. Модуль
+							наблюдатель находится в файле <strong>js/libs/watcher.js</strong>.
+						</p>
+
+
+
+						<p>Если в момент клика на пункт навигации было открыто меню «бургер», то оно закроется
+							автоматически.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!
+						</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

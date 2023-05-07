@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль «Ленивая подгрузка» (Lazy Loading)</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1206">
+					<h1 class="article__title title">Модуль «Ленивая подгрузка» (Lazy Loading)</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Модуль «Ленивая подгрузка» позволяет подгружать изображения, а также содержимое тегов iframe video audio только при доскролливании к элементу. Это существенно повышает скорость загрузки страницы.</p>
+
+
+
+						<h2>Подключение функционала</h2>
+
+
+
+						<p><strong>[HTML]</strong> Для подключения картинки с ленивой подгрузкой, в нужном месте следует вызвать <a rel="noreferrer noopener" href=".install.html#snippets" target="_blank">сниппет</a><strong> imgl</strong>, что выведет тег &lt;img&gt; но вместо атрибута src будет атрибут data-src. </p>
+
+
+
+						<p>При выводе других тегов (iframe video audio) также следует заменить src на data-src. </p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">data-src</span>=<span class="value">"img/cover.jpg"</span> <span class="attribute">alt</span>=<span class="value">""</span>&gt;</span></code></pre>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Во время режима продакшн, система распознает data-src и изменит для подключаемого webp-файла атрибут на data-srcset</p>
+						</blockquote>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку <strong>import ‘./files/scroll/lazyload.js’;</strong></p>
+
+
+
+						<h2>Работа функционала</h2>
+
+
+
+						<p>В момент доскроливания до объекта с атрибутом data-src либо data-srcset модуль подгрузит данные (переместит подключение в атрибут src/srcset), а также добавит к объекту класс <strong>_lazy-loaded</strong> и атрибут data-ll-status со значением loaded</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">data-src</span>=<span class="value">"img/cover.jpg"</span> <span class="attribute">alt</span>=<span class="value">""</span> <span class="attribute">loading</span>=<span class="value">"lazy"</span> <span class="attribute">src</span>=<span class="value">"img/cover.jpg"</span> <span class="attribute">data-ll-status</span>=<span class="value">"loaded"</span> <span class="attribute">class</span>=<span class="value">"_lazy-loaded"</span>&gt;</span></code></pre>
+
+
+
+						<h2>Расположение и дополнительные данные</h2>
+
+
+
+						<p>Модуль работает на основе плагина <strong>vanilla-lazyload.js. </strong> Подключение и настройки плагина находится в <strong>js/files/scroll/lazyload.js</strong>. Для более тонких настроек читайте <a rel="noreferrer noopener" href="https://github.com/verlok/vanilla-lazyload" target="_blank">полную документацию плагина</a>.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

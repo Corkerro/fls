@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Установка и запуск шаблона. Подготовка к работе</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-12">
+					<h1 class="article__title title">Установка и запуск шаблона. Подготовка к работе</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Итак, вы <a href="https://www.patreon.com/posts/startovyi-v3-59380989" target="_blank" rel="noreferrer noopener">скачали шаблон «Чертоги Фрилансера» v3.0.0</a> (далее ЧФ), какие следующие шаги?</p>
+
+
+
+						<h2 id="установка-шаблона">Установка шаблона</h2>
+
+
+
+						<p>Первым делом следует разархивировать zip-архив в вашу папку проекта. Следите за тем, чтобы сама папка и её родительские папки не содержали в названии кириллицу, пробелы, символы # и !</p>
+
+
+
+						<div class="wp-block-image">
+							<figure class="aligncenter size-full"><a href="https://template.fls.guru/wp-content/uploads/2022/01/01.png"><img width="879" height="394" src="https://template.fls.guru/wp-content/uploads/2022/01/01.png" alt="" class="wp-image-237" srcset="https://template.fls.guru/wp-content/uploads/2022/01/01.png 879w, https://template.fls.guru/wp-content/uploads/2022/01/01-300x134.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/01-768x344.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/01-250x112.png 250w" sizes="(max-width: 879px) 100vw, 879px" data-lg-id="ed1486df-ed62-4915-b8e2-050491633216"></a>
+								<figcaption>Содержимое архива в папке проекта</figcaption>
+							</figure>
+						</div>
+
+
+
+						<p>Если вы до этого момента не пользовались сборщиками GULP, WEBPACK и пакетным менеджером NPM, следует <a rel="noreferrer noopener" href="https://nodejs.org/ru/" target="_blank">скачать и установить Node.js</a>. Качайте версию рекомендованную для большинства.</p>
+
+
+
+						<p>Далее, открываем терминал в этой папке проекта. Терминал может быть встроен или открыт отдельно от редактора. Рекомендую использовать терминал <a rel="noreferrer noopener" href="https://git-scm.com/downloads" data-type="URL" data-id="https://git-scm.com/downloads" target="_blank">GIT Bash</a>.</p>
+
+
+
+						<p>Если вы до этого момента не пользовались сборщиком GULP введите в терминал команду <strong><code>npm i gulp-cli -g</code></strong> это установит GULP в систему глобально.</p>
+
+
+
+						<p>После завершения установки GULP введите команду <strong><code>npm i</code></strong></p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>В процессе установки в терминале могут возникать сообщение с пометкой WARN на желтом фоне. Эти сообщения можно игнорировать. Но, если вы получаете сообщение ERR! красным цветом — это критическая ошибка и её нужно исправлять.</p>
+						</blockquote>
+
+
+
+						<div class="wp-container-7 wp-block-columns">
+							<div class="wp-container-5 wp-block-column" style="flex-basis:50%">
+								<figure class="wp-block-image size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/03-1.png"><img loading="lazy" width="1024" height="626" src="https://template.fls.guru/wp-content/uploads/2022/01/03-1-1024x626.png" alt="" class="wp-image-251" srcset="https://template.fls.guru/wp-content/uploads/2022/01/03-1-1024x626.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/03-1-300x183.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/03-1-768x469.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/03-1-1536x938.png 1536w, https://template.fls.guru/wp-content/uploads/2022/01/03-1-246x150.png 246w, https://template.fls.guru/wp-content/uploads/2022/01/03-1.png 1766w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="46b4a148-a05e-4fe3-944d-fd0e1a7daf85"></a>
+									<figcaption>Предупреждения можно игнорировать</figcaption>
+								</figure>
+							</div>
+
+
+
+							<div class="wp-container-6 wp-block-column" style="flex-basis:50%">
+								<figure class="wp-block-image size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/02-2.png"><img loading="lazy" width="1024" height="624" src="https://template.fls.guru/wp-content/uploads/2022/01/02-2-1024x624.png" alt="" class="wp-image-252" srcset="https://template.fls.guru/wp-content/uploads/2022/01/02-2-1024x624.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/02-2-300x183.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/02-2-768x468.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/02-2-1536x936.png 1536w, https://template.fls.guru/wp-content/uploads/2022/01/02-2-246x150.png 246w, https://template.fls.guru/wp-content/uploads/2022/01/02-2.png 1770w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="fb9f8a5c-faba-4224-b898-c792c32957bd"></a>
+									<figcaption>Ошибка зависимостей</figcaption>
+								</figure>
+							</div>
+						</div>
+
+
+
+						<p>Часто может возникнуть ошибка зависимостей устанавливаемых пакетов (плагинов), и в NPM выше 7й версии это приводит к критической ошибке и остановке инсталляции.</p>
+
+
+
+						<p>Чтобы решить проблему выполните команду <code><strong>npm i --legacy-peer-deps</strong></code>, это запустит процесс установки игнорируя подобные несовместимости.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Помните — версии NodeJS и Python в вашей системе должны быть свежих версий.</p>
+						</blockquote>
+
+
+
+						<p>После успешной установки, у вас появится папка node_modules и файл package-lock.json </p>
+
+
+
+						<figure class="wp-block-image size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/05.png"><img loading="lazy" width="1024" height="624" src="https://template.fls.guru/wp-content/uploads/2022/01/05-1024x624.png" alt="" class="wp-image-259" srcset="https://template.fls.guru/wp-content/uploads/2022/01/05-1024x624.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/05-300x183.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/05-768x468.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/05-1536x935.png 1536w, https://template.fls.guru/wp-content/uploads/2022/01/05-246x150.png 246w, https://template.fls.guru/wp-content/uploads/2022/01/05.png 1770w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="ca9c0558-a1d5-4c67-bdec-b2995a5427ab"></a>
+							<figcaption>Установка завершена</figcaption>
+						</figure>
+
+
+
+						<p>Подробнее про <a href="./arhitektura-shablona-fajly-i-papki.html" target="_blank" rel="noreferrer noopener">архитектуру папок и файлов</a> ЧФ мы поговорим в следующей главе, а пока продолжаем подготовку к работе</p>
+
+
+
+						<h2 id="запуск-шаблона-и-режимы-работы">Запуск шаблона и режимы работы</h2>
+
+
+
+						<p>Шаблон «Чертоги Фрилансера» может выполнять несколько сценариев:</p>
+
+
+
+						<ol>
+							<li>Режим разработчика. Команда запуска <strong><code>npm run dev</code></strong></li>
+							<li>Режим продакшена. Команда запуска <strong><code>npm run build</code></strong></li>
+							<li>Режим продакшена и отправка результата на сервер по FTP. Команда запуска <strong><code>npm run deploy</code></strong></li>
+							<li>Режим продакшена и создание ZIP-архива с результатом. Команда запуска <strong><code>npm run zip</code></strong></li>
+							<li>Режим продакшена без создания WEBP изображений и действий связанных с этим форматом. Команда запуска <strong><code>npm run devbuild</code></strong></li>
+						</ol>
+
+
+
+						<p>Дополнительные команды:</p>
+
+
+
+						<ol>
+							<li>Ручное создание SVG спрайта. Команда запуска <code><strong>npm run sprite</strong></code></li>
+							<li>Конвертация шрифтов с принудительной перезаписью файла стилей. Команда запуска <strong><code>npm run fonts</code></strong></li>
+						</ol>
+
+
+
+						<h4 id="режим-разработчика">Режим разработчика</h4>
+
+
+
+						<p>В режиме разработчика выполняются только необходимые для процесса разработки задачи:</p>
+
+
+
+						<ul>
+							<li>Конвертация шрифтов и запись в файл стилей</li>
+							<li>Конвертация SCSS файлов в CSS файлы, переименование псевдонимов</li>
+							<li>Сборка HTML файлов, переименование псевдонимов</li>
+							<li>При использовании PUG, файлы преобразовываются в HTML, переименовываются псевдонимы</li>
+							<li>Собираются JS файлы</li>
+							<li>Запускается локальный сервер, открывается браузер с индексной страницей. </li>
+							<li>Запускается наблюдатель за изменением фалов. При каждом изменении файла браузер обновляет страницу (кроме страницы-содержания)</li>
+							<li>Копируются файлы из указанной папки</li>
+							<li>HTML CSS JS файлы результата не записываются на диск (<strong>папка dist не создается</strong>).</li>
+						</ul>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Если у вас слабый ПК (мало ОЗУ) или шаблон со временем начинает тормозить, откройте файл <strong>config/webpack.dev.js</strong> и раскомментируйте блок:</p>
+						</blockquote>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="tag">devMiddleware</span>: <span class="rules">{
+			<span class="rule"><span class="attribute">writeToDisk</span>:<span class="value"> true,
+		}</span></span></span>,</code></pre>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Параметр включит создание папки <strong>dist</strong> в режиме разработчика, что повышает скорость работы сборки на слабых ПК.</p>
+						</blockquote>
+
+
+
+						<h4 id="режим-продакшена"> Режим продакшена</h4>
+
+
+
+						<p> В режиме продакшена выполняется финализация проекта, а именно:</p>
+
+
+
+						<ul>
+							<li>Конвертация шрифтов и запись в файл стилей</li>
+							<li>Конвертация изображений в WEBP формат. Сжатие и оптимизация JPG PNG SVG картинок</li>
+							<li>Конвертация SCSS файлов в CSS файлы, переименование псевдонимов, группировка медиа-запросов, добавляются вендорные префиксы для обеспечения кроссбраузерности, обрабатывается подключение WEBP изображений, производится сжатие и оптимизация конечного файла (также создается несжатая копия)</li>
+							<li>Сборка HTML файлов, переименование псевдонимов, обрабатывается подключение WEBP изображений</li>
+							<li>При использовании PUG, файлы преобразовываются в HTML, переименовываются псевдонимы, обрабатывается подключение WEBP изображений</li>
+							<li>Собираются JS файлы, производится сжатие и оптимизация конечного файла. В результат попадает только используемый код. Итогом задачи будет создание двух файлов: сжатого app.min.js (подключен к HTML) и не сжатого app.js для дальнейшего редактирования другими специалистами.</li>
+							<li>Копируются файлы из указанной папки</li>
+							<li>Все файлы с результатом записываются на диск (обычно в папку dist), локальный сервер не запускается</li>
+						</ul>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Итак, давайте же запустим наш шаблон в режиме разработчика, для этого в терминале выполняем команду <strong><code>npm run dev</code></strong></p>
+						</blockquote>
+
+
+
+						<p>После запуска система выполнет все задачи режима разработчика описанные выше. Результатом работы должна стать открытая в браузере страница содержания. </p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Внимание, страница содержания не обновляется автоматически при её редактировании</p>
+						</blockquote>
+
+
+
+						<div class="wp-container-10 wp-block-columns">
+							<div class="wp-container-8 wp-block-column">
+								<figure class="wp-block-image size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/06.png"><img loading="lazy" width="1024" height="625" src="https://template.fls.guru/wp-content/uploads/2022/01/06-1024x625.png" alt="" class="wp-image-300" srcset="https://template.fls.guru/wp-content/uploads/2022/01/06-1024x625.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/06-300x183.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/06-768x469.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/06-1536x938.png 1536w, https://template.fls.guru/wp-content/uploads/2022/01/06-246x150.png 246w, https://template.fls.guru/wp-content/uploads/2022/01/06.png 1764w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="dd669094-7af5-4b63-bed6-918721cf0617"></a>
+									<figcaption>Старт выполнения команды</figcaption>
+								</figure>
+							</div>
+
+
+
+							<div class="wp-container-9 wp-block-column">
+								<figure class="wp-block-image size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/07.png"><img loading="lazy" width="1024" height="623" src="https://template.fls.guru/wp-content/uploads/2022/01/07-1024x623.png" alt="" class="wp-image-301" srcset="https://template.fls.guru/wp-content/uploads/2022/01/07-1024x623.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/07-300x182.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/07-768x467.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/07-1536x934.png 1536w, https://template.fls.guru/wp-content/uploads/2022/01/07-247x150.png 247w, https://template.fls.guru/wp-content/uploads/2022/01/07.png 1771w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="2b892970-5361-41be-9e5a-f154ca33ccd3"></a>
+									<figcaption>Команда успешно выполнена</figcaption>
+								</figure>
+							</div>
+						</div>
+
+
+
+						<div class="wp-block-image">
+							<figure class="aligncenter size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/08-3.png"><img loading="lazy" width="1024" height="480" src="https://template.fls.guru/wp-content/uploads/2022/01/08-3-1024x480.png" alt="" class="wp-image-321" srcset="https://template.fls.guru/wp-content/uploads/2022/01/08-3-1024x480.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/08-3-300x141.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/08-3-768x360.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/08-3-250x117.png 250w, https://template.fls.guru/wp-content/uploads/2022/01/08-3.png 1473w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="315c4ac6-a1df-441b-bd2a-8373f6ea6ccb"></a>
+								<figcaption>Страница содержания открыта в браузере</figcaption>
+							</figure>
+						</div>
+
+
+
+						<h2 id="возможные-ошибки-и-их-решения">Возможные ошибки и их решения</h2>
+
+
+
+						<p>Если браузер не запустился, а в терминале видны ошибки (ERR!) убедитесь что:</p>
+
+
+
+						<ul>
+							<li>У вас установлен Node.js и Python последней версии</li>
+							<li>Терминал открыт с правами администратора</li>
+							<li>В названиях папок на всем пути к проекту нет символа # или !</li>
+							<li>Папки и файлы должны быть названы латиницей без пробелов</li>
+							<li>Тег img и его содержимое должны быть записаны в одну строку без переносов</li>
+							<li>В атрибуте src должен быть указан путь к существующей картинке без пробелов</li>
+						</ul>
+
+
+
+						<p>При ошибке связанной с node-sass запустите команду <strong><code>npm rebuild node-sass</code></strong><br>При ошибке связанной с Python запустите команду <strong><code>npm install -g windows-build-tools</code></strong><br>При ошибке Error [ERR_UNSUPPORTED_ESM_URL_SCHEME]:</p>
+
+
+
+						<ol>
+							<li>Качаем версию 14.15.1 (<a href="https://nodejs.org/dist/v14.15.1/" target="_blank" rel="noreferrer noopener">https://nodejs.org/dist/v14.15.1/</a>), в Zip архиве. </li>
+							<li>Заходим в папку с установленным NodeJS, распаковываем содержимое архива в папку, с заменой файлов. </li>
+							<li>Далее идем сюда «Панель управления» =&gt; «Система» =&gt; «Дополнительные параметры системы» =&gt; «Дополнительно» =&gt; «Переменные среды» </li>
+							<li>В Системных переменных «Создать» переменную с именем ‘NODE_SKIP_PLATFORM_CHECK’ и присваиваем ей значение ‘1’. </li>
+							<li>Перезапускаем систему, и запускаем шаблон согласно инструкции</li>
+						</ol>
+
+
+
+						<h2 id="подготовка-редактора-к-комфортной-работе-с-шаблоном">Подготовка редактора к комфортной работе с шаблоном</h2>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Для того чтобы наслаждаться возможностями шаблона ЧФ по полной, нам следует произвести некоторые настройки редактора. В качестве примера представлен редактор VS Code</p>
+						</blockquote>
+
+
+
+						<h3 id="настройка-псевдонимов">Настройка псевдонимов</h3>
+
+
+
+						<p>В главе <a rel="noreferrer noopener" href="./arhitektura-shablona-fajly-i-papki.html" target="_blank">Архитектура шаблона. Файлы и папки</a> вы узнаете что различные части HTML/PUG SCSS файлов находятся на разных уровнял вложенности, что создает определенные неудобства при подключении, например картинок, в процессе разработки.</p>
+
+
+
+						<p>Неудобства мы не любим поэтому настроим, так называемые, псевдонимы (алиасы) путей к папкам. Для этого нам нужно установить плагин <a rel="noreferrer noopener" href="https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete" target="_blank">Path Autocomplete</a>. После установки открываем настройки редактора (settings.json), для этого жмем F1 в редакторе и в строке поиска пишем Open Settings и жмем на ссылку Open Settings (JSON).</p>
+
+
+
+						<p>В этот файл нужно аккуратно вставить следующий код:</p>
+
+
+
+						<pre class="wp-block-code"><code class="perl"><span class="string">"path-autocomplete.pathMappings"</span>: {
+			<span class="string">"<span class="variable">img</span>"</span>: <span class="string">"<span class="subst">${folder}</span>/simg"</span>, <span class="regexp">//</span> alias <span class="keyword">for</span> images
+			<span class="string">"<span class="variable">@scss</span>"</span>: <span class="string">"<span class="subst">${folder}</span>/src/scss"</span>, <span class="regexp">//</span> alias <span class="keyword">for</span> scss
+			<span class="string">"<span class="variable">@js</span>"</span>: <span class="string">"<span class="subst">${folder}</span>/src/js"</span>, <span class="regexp">//</span> alias <span class="keyword">for</span> js
+		}</code></pre>
+
+
+
+						<p>Очень важно соблюдать синтаксис JSON, обращайте внимания на запятые:</p>
+
+
+
+						<div class="wp-block-image">
+							<figure class="aligncenter size-large"><a href="https://template.fls.guru/wp-content/uploads/2022/01/09.png"><img loading="lazy" width="1024" height="316" src="https://template.fls.guru/wp-content/uploads/2022/01/09-1024x316.png" alt="" class="wp-image-337" srcset="https://template.fls.guru/wp-content/uploads/2022/01/09-1024x316.png 1024w, https://template.fls.guru/wp-content/uploads/2022/01/09-300x93.png 300w, https://template.fls.guru/wp-content/uploads/2022/01/09-768x237.png 768w, https://template.fls.guru/wp-content/uploads/2022/01/09-250x77.png 250w, https://template.fls.guru/wp-content/uploads/2022/01/09.png 1113w" sizes="(max-width: 1024px) 100vw, 1024px" data-lg-id="c7c3a7e5-1283-40a6-8427-1aec711d5422"></a>
+								<figcaption>Правильная вставка кода</figcaption>
+							</figure>
+						</div>
+
+
+
+						<p>После этого вы смело можете использовать псевдонимы при подключении файлов, например:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/cover.jpg"</span> <span class="attribute">alt</span>=<span class="value">"Картинка"</span>&gt;</span></code></pre>
+
+
+
+						<p>Редактор распознает псевдоним и выведет список файлов в указанной папке, а во время сборки система сама поменяет псевдоним на нужный путь!</p>
+
+
+
+						<h3 class="snippets" id="настройка-сниппетов">Настройка сниппетов</h3>
+
+
+
+						<p>Сниппеты — это короткие коды которые могут вызывать готовые заготовки кода любого объема. Это колоссально повышает скорость разработки. </p>
+
+
+
+						<p>Конечно же, я использовал эту супер возможность в своих чертогах. То есть, построение, например, правильной HTML структуры для того или иного JS модуля я добавил в сниппеты.</p>
+
+
+
+						<p>Чтобы добавить набор сниппетов из шаблона к себе в редактор выполняем следующие действия:</p>
+
+
+
+						<ol>
+							<li>Открываем файл snnipets.txt из архива ЧФ и копируем все содержимое</li>
+							<li>В редакторе VS Code переходим в настройки (шестеренка) -&gt; User Snippets -&gt;New Global Snippets File пишем название, например fls, и заменяем содержимое на скопированное из snnipets.txt</li>
+							<li>При обновлении шаблона и сниппетов создавать новый файл не нужно, следует открыть существующий и обновить содержимое</li>
+						</ol>
+
+
+
+						<p>Отлично, сниппеты ЧФ на борту! В этой документации, а также в коде шаблона вы часто будите встречать подсказки с указанием сниппета. </p>
+
+
+
+						<p>В следующей главе мы познакомимся со <a href="./arhitektura-shablona-fajly-i-papki.html">структурой файлов и папок шаблона «Чертоги Фрилансера» v3.0.0</a></p>
+
+
+
+						<p>Приятной работы</p>
+
+
+
+						<h2 id="дополнительные-материалы">Дополнительные материалы</h2>
+
+
+
+						<p>Для лучшего понимания установки Node.JS, GIT Bash, GULP, настройки псевдонимов посмотрите это видео:</p>
+
+
+
+						<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
+							<div class="wp-block-embed__wrapper">
+								<iframe loading="lazy" title="GULP 2022 установка настройка плагины. Подробный курс по настройке галпа для быстрой сборки проекта" width="500" height="281" src="https://www.youtube.com/embed/jU88mLuLWlk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+							</div>
+						</figure>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

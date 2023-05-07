@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль «Динамический адаптив»</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-560">
+					<h1 class="article__title title">Модуль «Динамический адаптив»</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Во время работы над адаптивом сайта, нам то и дело приходится изменять внешний вид объекта. В
+							некоторых случаях нам необходимо изменить порядок элементов, когда при определенном
+							разрешении экрана некоторый блок должен находится в совершенно другом месте структуры.
+							Особенно часто это требуется при адаптации шапки сайта когда необходимо перенести блок с
+							контактами в меню-бургер. </p>
+
+
+
+						<p>Функционал динамического адаптива перемещает необходимый блок (на определенном разрешении) в
+							другой блок. Перемещение отображается в разметке HTML. </p>
+
+
+
+						<h2>Подключение функционала</h2>
+
+
+
+						<p>[JS] В файле <strong>js/app.js</strong> раскомментировать строку <strong>import
+								«./libs/dynamic_adapt.js»</strong></p>
+
+
+
+						<h2>Использование функционала</h2>
+
+
+
+						<p>[HTML] <span style="font-size: revert; color: initial;">В блок который нужно переместить
+								добавляем атрибут <strong>data-da</strong> со значениями атрибута указанными
+								ниже</span>:</p>
+
+
+
+						<figure class="wp-block-image size-large is-resized"><img src="https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-1024x530.jpg" alt="" class="wp-image-745" width="627" height="324" srcset="https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-1024x530.jpg 1024w, https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-300x155.jpg 300w, https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-768x397.jpg 768w, https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-1536x794.jpg 1536w, https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-2048x1059.jpg 2048w, https://template.fls.guru/wp-content/uploads/2022/01/dynamic-adapt-3-250x129.jpg 250w" sizes="(max-width: 627px) 100vw, 627px"></figure>
+
+
+
+						<h2>Расположение и дополнительные данные </h2>
+
+
+
+						<p>Функционал находится в <strong>js/libs/dynamic_adapt.js</strong>. Название функции
+							<strong>DynamicAdapt(type)</strong>.
+						</p>
+
+
+
+						<p>У модуля есть ограничения, например, если перекидывать несколько объектов одновременно в один
+							и тот же блок, может возникнуть путаница с порядком блоков.</p>
+
+
+
+						<h2>Дополнительные материалы</h2>
+
+
+
+						<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
+							<div class="wp-block-embed__wrapper">
+								<iframe loading="lazy" title="Динамический адаптив // Быстрая адаптация сложных объектов на JavaScript" width="500" height="281" src="https://www.youtube.com/embed/QKuMr575vlQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+							</div>
+						</figure>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!
+						</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль «Показать ещё»</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-810">
+					<h1 class="article__title title">Модуль «Показать ещё»</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Модуль «Показать ещё» позволяет изначально скрыть часть текста или элементов списка показывая только указанную высоту либо количество элементов. Есть возможность включать функционал на определенной ширине экрана (брейкпоинте).</p>
+
+
+
+						<h2>Подключение функционала</h2>
+
+
+
+						<p><strong>[HTML]</strong> В нужном месте вызвать <a rel="noreferrer noopener" href="https://template.fls.guru/template-docs/install.html#snippets" target="_blank">сниппет</a> <strong>showmore</strong> (классы заменить на нужные). Либо вручную создать структуру где для оболочки добавлен атрибут <strong>data-showmore</strong>, для дочернего элемента <strong>data-showmore-content</strong> и для кнопки <strong>data-showmore-button</strong>. Кнопку изначально нужно скрыть добавив атрибут <strong>hidden</strong> и добавить два тега &lt;span&gt; с текстом показа и скрытия контента:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore-content</span> <span class="attribute">class</span>=<span class="value">"block__content"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">hidden</span> <span class="attribute">data-showmore-button</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"block__more"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Показать еще<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Скыть<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку <strong>flsFunctions.showMore();</strong><br><strong>[SCSS]</strong> Раскомментировать строку <strong>@import «base/showmore»;</strong> в файле <strong>src/scss/base.scss</strong> — это подключит базовые стили, отредактировать под свои нужды</p>
+
+
+
+						<h2>Использование функционала</h2>
+
+
+
+						<p>В элемент с атрибутом <strong>data-showmore-content</strong> добавляем текст и прочий контент, либо, если это список (UL/OL) элементы списка (LI). </p>
+
+
+
+						<p>В зависимости от того, какой контент используется (текст или элементы списка) указываем значение для атрибута <strong>data-showmore</strong>:</p>
+
+
+
+						<ul>
+							<li><strong>size</strong> — ограничение по высоте блока (<em>по умолчанию</em>)</li>
+							<li><strong>items</strong> — ограничение количества выводимых элементов списка</li>
+						</ul>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore</span>=<span class="value">"items"</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-showmore-content</span> <span class="attribute">class</span>=<span class="value">"block__content"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">li</span>&gt;</span>Пункт №1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">li</span>&gt;</span>Пункт №2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">li</span>&gt;</span>Пункт №3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">li</span>&gt;</span>Пункт №4<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">li</span>&gt;</span>Пункт №5<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">hidden</span> <span class="attribute">data-showmore-button</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"block__more"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Показать еще<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Скыть<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<p>В зависимости от того, какой тип выбран, указываем значение для атрибута <strong> <strong>data-showmore-content</strong> </strong>: </p>
+
+
+
+						<ul>
+							<li><strong>Высота блока в пикселях</strong> (<em>число без px, по умолчанию 150</em> )</li>
+							<li><strong>Количество выводимых элементов списка</strong> (<em>число, по умолчанию 3</em> )</li>
+						</ul>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore-content</span>=<span class="value">"200"</span> <span class="attribute">class</span>=<span class="value">"block__content"</span>&gt;</span>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo 
+				voluptates magni culpa, perferendis vel quam consequuntur possimus, 
+				vero placeat quo enim obcaecati quas, veritatis magnam non. Architecto, 
+				porro voluptatum?
+			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">hidden</span> <span class="attribute">data-showmore-button</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"block__more"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Показать еще<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Скыть<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<p>Если контента будет меньше чем указанное ограничение, кнопка «Показать ещё» <strong>не будет показана</strong>. В противном случае, контент ограничится по высоте либо по количеству элементов и при клике на кнопку будет показан полностью, также, к элементу с атрибутом <strong>data-showmore</strong> добавится класс <strong>_showmore-active</strong> (первый спан в кнопке будет скрыт а второй показан). Повторный клик вернет ограничение.</p>
+
+
+
+						<p>Есть возможность управлять скоростью разворачивания контента, для этого следует указать значение атрибуту <strong>data-showmore-button</strong> в миллисекундах (по умолчанию 500):</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore-content</span>=<span class="value">"200"</span> <span class="attribute">class</span>=<span class="value">"block__content"</span>&gt;</span>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo 
+				voluptates magni culpa, perferendis vel quam consequuntur possimus, 
+				vero placeat quo enim obcaecati quas, veritatis magnam non. Architecto, 
+				porro voluptatum?
+			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">hidden</span> <span class="attribute">data-showmore-button</span>=<span class="value">"1000"</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"block__more"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Показать еще<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Скыть<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<h3>Включение функционала на определенной ширине экрана</h3>
+
+
+
+						<p>Для того чтобы использовать функционал на определенной ширине экрана, к объекту с атрибутом <strong>data-showmore</strong> добавляем атрибут <strong>data-showmore-media</strong> где, через запятую, указываем нужную ширину, а также тип:</p>
+
+
+
+						<ul>
+							<li><strong>max</strong> (по умолчанию) — функционал включится на ширине меньшей чем указанная </li>
+							<li><strong>min</strong> — функционал включится на ширине большей чем указанная</li>
+						</ul>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore</span> <span class="attribute">data-showmore-media</span>=<span class="value">"768,min"</span> <span class="attribute">class</span>=<span class="value">"block"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-showmore-content</span>=<span class="value">"200"</span> <span class="attribute">class</span>=<span class="value">"block__content"</span>&gt;</span>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo 
+				voluptates magni culpa, perferendis vel quam consequuntur possimus, 
+				vero placeat quo enim obcaecati quas, veritatis magnam non. Architecto, 
+				porro voluptatum?
+			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">hidden</span> <span class="attribute">data-showmore-button</span>=<span class="value">"1000"</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"block__more"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Показать еще<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">span</span>&gt;</span>Скыть<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<h2>Расположение и дополнительные данные</h2>
+
+
+
+						<p>Функционал находится в <strong>js/files/functions.js</strong>. Название функции<strong> showMore()</strong></p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

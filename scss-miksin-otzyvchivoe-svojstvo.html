@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>SCSS-Миксин «Отзывчивое (адаптивное) свойство»</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1190">
+					<h1 class="article__title title">SCSS-Миксин «Отзывчивое (адаптивное) свойство»</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>С помощью SCSS-миксина «Отзывчивое (адаптивное) свойство» можно отзывчиво (в зависимости ширины экрана) изменять значение того или иного CSS-свойства от начального значения, на определенной ширине экрана, до конечного значения на другой ширине экрана. Можно указывать произвольные промежутки ширин. Также, существует несколько режимов поведения миксина вне указанных промежутках.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Миксин представлен в двух реализациях — clamp() и calc(). Сlamp работает быстрее, но если возникают проблемы с поддержкой браузерами миксин автоматически переключится на calc().</p><cite>Принудительно использовать calc() можно изменив код миксина в файле scss/base/mixins.scss</cite>
+						</blockquote>
+
+
+
+						<h2 id="использование-миксина">Использование миксина</h2>
+
+
+
+						<p>Чтобы работать с миксином нужно в SCSS селекторе вызвать сниппет <strong>av</strong>:</p>
+
+
+
+						<p><em>Базовый режим работы миксина:</em></p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"свойство"</span>, начальное значение, конечное значение)</span></span>;</code></pre>
+
+
+
+						<p>Где:</p>
+
+
+
+						<ol>
+							<li><strong>свойство </strong>— CSS-свойство, значение которого нужно адаптировать. Можно указать любое свойство значение которого указывается в цифрах.</li>
+							<li><strong>начальное значение</strong> — стартовое значение свойства в пикселях, пишем число без px. Обычно указывается по макету.</li>
+							<li><strong>конечное значение</strong> — финальное значение свойства в пикселях, пишем число без px. Значение, к которому мы хотим прийти на меньших ширинах экрана.</li>
+						</ol>
+
+
+
+						<p><em>Примеры:</em></p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"font-size"</span>, <span class="number">50</span>, <span class="number">20</span>)</span></span>;
+		<span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"padding-top"</span>, <span class="number">80</span>, <span class="number">10</span>)</span></span>;
+		...</code></pre>
+
+
+
+						<h3 id="алгоритм-работы-миксина">Алгоритм работы миксина</h3>
+
+
+
+						<p>Миксин работает на основе значений переменных <strong>$minWidth</strong>, <strong>$maxWidth</strong>, <strong>$maxWidthContainer</strong>, <strong>$containerPadding</strong> и <strong>$containerWidth</strong> расположеных в блоке <a rel="noreferrer noopener" href=".osnovnoj-fajl-stilej-style-scss-nastrojka-adaptivnoj-setki-i-prochee.html#adaptiv" target="_blank">«Настройка адаптивной сетки»</a> файла <strong>scss/style.scss</strong></p>
+
+
+
+						<p>В итоге, по умолчанию, миксин будет работать следующим образом:</p>
+
+
+
+						<p>Если <strong>$maxWidthContainer</strong> больше нуля, то значения свойства будут меняться в промежутке ширин от <strong>$containerWidth</strong> до <strong>$minWidth</strong>. То есть, по всей ширине ограничивающего контейнера.</p>
+
+
+
+						<p>При этом, если ширина экрана больше чем <strong>$containerWidth</strong>, то значение свойства будет равно <strong>начальному зна</strong>чению. Если ширина экрана меньше чем <strong>$minWidth</strong>, то значение свойства будет равно <strong>конечному значению</strong>.</p>
+
+
+
+						<p>Если <strong>$maxWidthContainer</strong> равен нулю, то значения свойства будут меняться в промежутке ширин от<strong> <strong>$maxWidth</strong></strong> до <strong>$minWidth</strong>. То есть, по всей ширине экрана (вьюпорта).</p>
+
+
+
+						<h3 id="дополнительные-настройки-и-режимы-работы">Дополнительные настройки и режимы работы</h3>
+
+
+
+						<p>Миксин позволяет указать свой промежуток ширины внутри которого будет адаптироваться значение свойства. </p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"свойство"</span>, начальное значение, конечное значение, ширина от, ширина до)</span></span>; </code></pre>
+
+
+
+						<ul>
+							<li><strong>ширина от</strong> — стартовая ширина меньше которой начнется адаптация, пишем число без px.</li>
+							<li><strong>ширина до</strong> — конечная ширина до которой будет адаптироваться значение свойства, пишем число без px.</li>
+						</ul>
+
+
+
+						<p><em>Пример:</em></p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"font-size"</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">800</span>, <span class="number">480</span>)</span></span>;</code></pre>
+
+
+
+						<p>При этом, работать миксин будет только в этом промежутке, а за его пределами значение свойства будет по умолчанию либо наследоваться от предков. </p>
+
+
+
+						<p>То есть, <strong>font-size</strong> из примера получит значение <strong>50px</strong> только на ширине <strong>800px</strong> и будет адаптироваться до <strong>20px</strong> до ширины <strong>480px</strong>. За пределами этого промежутка свойство унаследует значение по умолчанию.</p>
+
+
+
+						<p>Это поведение миксина мы тоже можем настроить указав режим работы.</p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"свойство"</span>, начальное значение, конечное значение, ширина от, ширина до, режим работы)</span></span>; </code></pre>
+
+
+
+						<p><strong>режим работы</strong> — может принимать числовые значения <strong>1</strong>, <strong>2</strong> или <strong>3</strong>:</p>
+
+
+
+						<ul>
+							<li><strong>1</strong> — Если ширина экрана больше чем <strong>ширина от</strong>, то значение свойства будет равно <strong>начальному значению</strong>. Если ширина экрана меньше чем <strong>ширина до</strong>, то значение свойства будет равно <strong>конечному значению</strong>.</li>
+							<li><strong>2</strong> — Если ширина экрана больше чем <strong>ширина от</strong>, то значение свойства будет равно <strong>начальному значению</strong>. Если ширина экрана меньше чем <strong>ширина до</strong>, то значение свойства будет по умолчанию либо наследоваться от предков.</li>
+							<li><strong>3</strong> — Если ширина экрана больше чем <strong>ширина от</strong>, то значение свойства будет по умолчанию либо наследоваться от предков. Если ширина экрана меньше чем <strong>ширина до</strong>, то значение свойства будет равно <strong>конечному значению</strong>.</li>
+						</ul>
+
+
+
+						<p><em>Пример:</em></p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"font-size"</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">800</span>, <span class="number">480</span>, <span class="number">1</span>)</span></span>;</code></pre>
+
+
+
+						<p>Также мы можем использовать несколько вызовов миксина с разными промежутками:</p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"font-size"</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">800</span>, <span class="number">480</span>, <span class="number">2</span>)</span></span>;
+		<span class="at_rule">@include <span class="function">adaptiveValue(<span class="string">"font-size"</span>, <span class="number">20</span>, <span class="number">10</span>, <span class="number">480</span>, <span class="number">320</span>)</span></span>;</code></pre>
+
+
+
+						<p>В примере произойдет следующее: значение font-size будет 50px, в промежутке ширин экрана от 800px до 480px, он будет отзывчиво адаптироваться от 50px до 20px. А в промежутке от 480px до 320px отзывчиво адаптироваться от 20px до 10px.</p>
+
+
+
+						<h2 id="расположение">Расположение</h2>
+
+
+
+						<p>Миксин <strong>adaptiveValue</strong> находится в файле <strong>scss/base/mixins.scss</strong></p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

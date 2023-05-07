@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль слайдера «Swiper»</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1258">
+					<h1 class="article__title title">Модуль слайдера «Swiper»</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>В шаблоне <a rel="noreferrer noopener" href="https://www.patreon.com/posts/startovyi-v3-59380989" target="_blank">«Чертоги Фрилансера» v3.0.0</a>, далее ЧФ, есть подготовка к работе со <a rel="noreferrer noopener" href="https://swiperjs.com/" target="_blank">слайдером Swiper</a>.</p>
+
+
+
+						<p><strong>[HTML]</strong> Существует два сниппета для построения HTML-структуры слайдера:</p>
+
+
+
+						<ol>
+							<li><strong>swiper</strong> — строит минимальную структуру с уже добавленными классами слайдера (для более опытных)</li>
+							<li><strong>swiperfull</strong> — строит полную структуру слайдера с добавлением всех возможных элементов управления (кнопки «влево/вправо», скролл, пагинация (булеты)) с уже добавленными классами слайдера. Весь код сопровождается комментариями (для новичков).</li>
+						</ol>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку <strong>import «./files/sliders.js»;</strong></p>
+
+
+
+						<p>В файле <strong>js/files/sliders.js</strong> выполняется подключение самого слайдера «Swiper» из NPM пакета (подключено по умолчанию)</p>
+
+
+
+						<pre class="wp-block-code"><code class="python"><span class="keyword">import</span> Swiper, { Navigation } <span class="keyword">from</span> <span class="string">'swiper'</span>;</code></pre>
+
+
+
+						<p>При необходимости, можно подключить больше нужных модулей:</p>
+
+
+
+						<pre class="wp-block-code"><code class="python"><span class="keyword">import</span> Swiper, { Navigation, Pagination, Lazy, Autoplay } <span class="keyword">from</span> <span class="string">'swiper'</span>;</code></pre>
+
+
+
+						<p>Полный список модулей — <a href="https://swiperjs.com/swiper-api#using-js-modules" target="_blank" rel="noreferrer noopener">тут</a> </p>
+
+
+
+						<p>Также, ниже по коду, есть пример-подготовка для создания конкретного слайдера (функция <strong>initSliders();</strong>) Тут мы создаем и настраиваем нужные нам слайдеры, не забываем указывать модули для конкретного слайдера: </p>
+
+
+
+						<pre class="wp-block-code"><code class="cs"><span class="keyword">new</span> Swiper(<span class="string">'.swiper'</span>, {
+			modules: [Navigation, Autoplay],
+			...
+		}</code></pre>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Информацию по настройке смотри в <a rel="noreferrer noopener" href="https://swiperjs.com/swiper-api" data-type="URL" data-id="https://swiperjs.com/swiper-api" target="_blank">документации</a> на сайте слайдера.</p>
+						</blockquote>
+
+
+
+						<p>Инициализация слайдера(ов) <strong>initSliders();</strong> происходит после полной загрузки страницы ниже по коду:</p>
+
+
+
+						<pre class="wp-block-code"><code class="javascript">window.addEventListener(<span class="string">"load"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> {</span>
+			<span class="comment">// Запуск инициализации слайдеров</span>
+			initSliders();
+		<span>}</span>);</code></pre>
+
+
+
+						<p><strong>[SCSS]</strong> По умолчанию, в файле <strong>js/files/sliders.js</strong> подключены базовые, минимально необходимые для работы, стили слайдера<strong> import «../../scss/base/swiper.scss»;</strong> (для более опытных). Также есть возможность подключить (расскоментировав строку) полные стили слайдера из файла <strong>scss/libs/swiper.scss</strong> или из пакета <strong>import ‘swiper/css’;</strong> (для начинающих)</p>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль поэкранной прокрутки страницы (FullPage)</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1836">
+					<h1 class="article__title title">Модуль поэкранной прокрутки страницы (FullPage)</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>В шаблоне встроен функционал поэкранной прокрутки (скролла) страницы. Авторы Хмурый Кот, Фрилансер по жизни.</p>
+
+
+
+						<h2>Подключение модуля</h2>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку <strong>import ‘./libs/fullpage.js’</strong></p>
+
+
+
+						<p><strong>[SCSS]</strong> В файле <strong>src/scss/base.scss</strong> раскомментировать строку <strong>@import «base/fullpage»;</strong></p>
+
+
+
+						<p><strong>[HTML]</strong> Использовать сниппет <strong>fullpage</strong> либо построить HTML-структуру самостоятельно:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-fp</span> <span class="attribute">class</span>=<span class="value">"some-class"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-fp-section</span> <span class="attribute">class</span>=<span class="value">"some-class__section"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+		   ...
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<h2>Настройки модуля</h2>
+
+
+
+						<h4>Буллеты</h4>
+
+
+
+						<p>Существует возможность добавить кнопки переключения секций (буллеты). Для этого следует к объекту с дата атрибутом <strong>data-fp</strong> добавить дата атрибут <strong>data-fp-bullets</strong></p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-fp</span> <span class="attribute">data-fp-bullets</span> <span class="attribute">class</span>=<span class="value">"some-class"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-fp-section</span> <span class="attribute">class</span>=<span class="value">"some-class__section"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+		   ...
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<h4>Эффекты переключения</h4>
+
+
+
+						<p>Для смены эффекта переключения, объекту с дата атрибутом <strong>data-fp</strong> добавить дата атрибут <strong>data-fp-effect</strong> и в качестве значения добавить один из следующих параметров fade, cards, slider (по умолчанию)</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-fp</span> <span class="attribute">data-fp-effect</span>=<span class="value">"fade"</span> <span class="attribute">class</span>=<span class="value">"some-class"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-fp-section</span> <span class="attribute">class</span>=<span class="value">"some-class__section"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+		   ...
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

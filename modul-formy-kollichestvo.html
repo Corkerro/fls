@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль формы «Колличество»</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1794">
+					<h1 class="article__title title">Модуль формы «Колличество»</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Модуль представляет собой готовый блок для выбора количества (например товара в интернет-магазине).</p>
+
+
+
+						<h2>Подключение модуля</h2>
+
+
+
+						<p><strong>[HTML]</strong> В нужном месте вызвать <a rel="noreferrer noopener" href=".install.html#snippets" target="_blank">сниппет</a><strong> quantity</strong>. Будет построена структура модуля с кнопками и полем ввода. Классы и структуру можно менять под сои нужды. В атрибуте <strong>value</strong> указываем начальное значение количества.</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-quantity</span> <span class="attribute">class</span>=<span class="value">"quantity"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">data-quantity-plus</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"quantity__button quantity__button_plus"</span>&gt;</span><span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"quantity__input"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">input</span> <span class="attribute">data-quantity-value</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">""</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">data-quantity-minus</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"quantity__button quantity__button_minus"</span>&gt;</span><span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<p><strong><strong>[SCSS]</strong> </strong>(не обязательно) Если вы хотите сразу посмотреть на работу блока и оставили классы предложенные сниппетом, вы можете раскомментировать строку <strong>@import «quantity»;</strong> в файле <strong>src/scss/base/forms/<strong>forms</strong>.scss</strong> — это подключит базовые стили, их можно отредактировать под свои нужды.</p>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку <strong>flsForms.formQuantity();</strong></p>
+
+
+
+						<h4>Дополнительные параметры</h4>
+
+
+
+						<p>К элементу &lt;INPUT&gt; можно добавить дополнительные настройки:</p>
+
+
+
+						<ul>
+							<li><strong>data-quantity-max=’число’</strong> установит максимальное значение поля</li>
+							<li><strong>data-quantity-min=’число’</strong> установит минимальное значение поля</li>
+						</ul>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

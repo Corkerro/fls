@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Работа с формами и элементами форм</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1429">
+					<h1 class="article__title title">Работа с формами и элементами форм</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>В шаблоне <a href="https://www.patreon.com/posts/startovyi-v3-59380989" target="_blank" rel="noreferrer noopener">«Чертоги Фрилансера» v3.0.0</a> (далее ЧФ) реализован функционал помогающий решать различные рутинные задачи при работе с формами.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>В этом документе описан общий функционал работы с полями, плейсхолдерами, валидацией, вариантами отправки форм и т.д. В отдельных разделах будет описан функционал конкретных элементов форм, таких как:</p>
+						</blockquote>
+
+
+
+						<ul>
+							<li><a href="./otpravka-pisma-na-pochtu-phpmailer.html" target="_blank" rel="noreferrer noopener">Отправка писем на почту (PHPMailer)</a></li>
+							<li><a rel="noreferrer noopener" href="./funkcional-kastomizacii-select.html" target="_blank">Кастомизация элемента SELECT</a></li>
+							<li>Кастомизация (стилизация) элементов CHECKBOX и RADIO</li>
+							<li>Модуль «Маски» для полей ввода</li>
+							<li>Модуль «Звездный рейтинг»</li>
+							<li><a rel="noreferrer noopener" href="./modul-formy-kollichestvo.html" target="_blank">Модуль «Колличество»</a></li>
+							<li>Модуль «Range» (ползунок)</li>
+						</ul>
+
+
+
+						<h2>Работа с полями форм</h2>
+
+
+
+						<p>Работа с полями форм подразумевает под собой следующий функционал:</p>
+
+
+
+						<ol>
+							<li>Скрытие placeholder при фокусе</li>
+							<li>Добавление классов полю и его родителю при фокусе</li>
+							<li>Функционал «Показать пароль» для полей с типом password</li>
+							<li>Возможность моментальной валидации поля при потере фокуса</li>
+						</ol>
+
+
+
+						<p>Для того чтобы подключить общий функционал для работы с полями форм необходимо расскоментировать функцию <strong>flsForms.formFieldsInit({…<span>}</span>)</strong> в файле <strong>js/app.js</strong>:</p>
+
+
+
+						<pre class="wp-block-code"><code class="css"><span class="tag">flsForms</span><span class="class">.formFieldsInit</span>(<span class="rules">{
+		<span class="rule"><span class="attribute">viewPass</span>:<span class="value"> false,
+		autoHeight: false
+	}</span></span></span>);</code></pre>
+
+
+
+						<p>Передавать функции можно следующие параметры:</p>
+
+
+
+						<ul>
+							<li><strong>viewPass</strong> — позволяет включить функционал «Показать пароль» . true — включено, false — выключено (по умолчанию).</li>
+							<li><strong>autoHeight</strong> — позволяет включить функционал «Автовысота» для textarea . true — включено, false — выключено (по умолчанию).</li>
+						</ul>
+
+
+
+						<h5>Работа с атрибутом placeholder</h5>
+
+
+
+						<p>По умолчанию, после подключения <strong>flsForms.formFieldsInit({…<span>}</span>)</strong>, значение добавленного полю HTML-атрибута <strong>placeholder</strong> скопируется в созданный скриптом атрибут <strong>data-placeholder</strong>, что позволит скрывать плейсхолдер при фокусе на поле. Если нам нужно отключить скрытие для конкретного поля, ему следует добавить атрибут <strong>data-placeholder-nohide</strong></p>
+
+
+
+						<h5>Добавление классов</h5>
+
+
+
+						<p> По умолчанию, после подключения <strong>flsForms.formFieldsInit({…<span>}</span>)</strong>, при возникновении фокуса, к полю а также к его непосредственному родительскому элементу, добавится класс <strong>_form-focus</strong>. Если нам нужно отключить добавление классов для конкретного поля, ему следует добавить атрибут <strong>data-no-focus-classes</strong></p>
+
+
+
+						<h5>Валидация поля при потере фокуса</h5>
+
+
+
+						<p>Для того чтобы скрипт начал вызывать <a data-goto-top="20" data-goto-header="" data-goto=".validate" href="#">функционал валидации</a> поля в момент потери им фокуса, следует добавить полю атрибут <strong>data-validate</strong>. </p>
+
+
+
+						<p>Стоит добавить, что функционал работы с полями форм также удалит ошибку добавленную к полю валидатором при получении им фокуса. Подробнее о функционале валидации полей смотри далее в этом документе.</p>
+
+
+
+						<h5> Функционал «Показать пароль»</h5>
+
+
+
+						<p>Функционал «Показать пароль», позволяет отображать зашифрованное значение поля с типом password при клике на объект с классом содержащим строку «__viewpass» который находится вместе с полем в одном родителе:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"form"</span> <span class="attribute">action</span>=<span class="value">"#"</span>&gt;</span>
+		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form__line"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">input</span> <span class="attribute">autocomplete</span>=<span class="value">"off"</span> <span class="attribute">type</span>=<span class="value">"password"</span> <span class="attribute">name</span>=<span class="value">"form[]"</span> <span class="attribute">value</span>=<span class="value">"123456"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"form__viewpass"</span> <span class="attribute">type</span>=<span class="value">"button"</span>&gt;</span>Показать пароль<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+		<span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span>Отправить<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+	<span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></pre>
+
+
+
+						<p>В момент клика на объект с классом содержащим строку «__viewpass» в нему добавляется класс <strong>_viewpass-active</strong>, а тип поля ввода меняется на text. Повторное нажатие выполнит обратные действия.</p>
+
+
+
+						<p>Напомню, для того чтобы включить функционал «Показать пароль» следует указать <strong>true</strong> для параметра <strong>viewPass </strong>при подключении функционала в файле <strong>js/app.js</strong>.</p>
+
+
+
+						<h5> Функционал «Автовысота» для textarea</h5>
+
+
+
+						<p>Функционал «Автовысота» позволяет элементу textarea автоматически подстраиваться по высоте под вводимый текст.</p>
+
+
+
+						<p>Для включения необходимо назнать <strong>true</strong> для параметра <strong>autoHeight</strong>, а также добавить атрибут <strong>data-autoheight</strong> элементe(ам) textarea.</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">name</span>=<span class="value">"message"</span> <span class="attribute">data-autoheight</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></pre>
+
+
+
+						<p>Дополнительно можно указать следующие параметры:</p>
+
+
+
+						<ul>
+							<li><strong>data-autoheight-min=’число’</strong> — минимальная (стартовая) высота textarea</li>
+							<li><strong>data-autoheight-max=’<strong>число’</strong></strong> — максимальная высота textarea</li>
+						</ul>
+
+
+
+						<h2 class="validate">Валидация элементов форм</h2>
+
+
+
+						<p>Для того чтобы элемент формы начал проходить валидацию, ему следует добавить атрибут <strong>data-required</strong>. Теперь при отправке формы, а также если элементу добавлен атрибут <strong>data-validate</strong>, он будет проверяться на предмет верного заполнения. </p>
+
+
+
+						<p>Для того чтобы включить особые правила валидации поля, атрибуту следует добавить одно из значений: </p>
+
+
+
+						<ul>
+							<li><strong>email</strong> — включит валидацию на ввод корретного E-mail</li>
+							<li>идет работа над новыми пресетами</li>
+						</ul>
+
+
+
+						<p><em>Пример:</em></p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">data-required</span>=<span class="value">"email"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"form[]"</span>&gt;</span></code></pre>
+
+
+
+						<p>Если элемент заполнен не верно, к нему, а также к его родителю добавится класс <strong>_form-error</strong>. Если мы хотим дополнительно вывести произвольный текст ошибки, нам следует указать его в атрибуте <strong>data-error</strong> и добавить к полю:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">data-error</span>=<span class="value">"Введен не верный E-mail"</span> <span class="attribute">data-required</span>=<span class="value">"email"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"form[]"</span>&gt;</span></code></pre>
+
+
+
+						<p>Теперь, при возникновении ошибки валидации, под элементом добавится объект с классом <strong>form__error</strong> содержащий ваш текст ошибки.</p>
+
+
+
+						<p>Напомню, что функционал работы с полями удалит классы ошибок и объект с классом <strong>form__error</strong> при получении полем фокуса.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Для отключения валидации элементов конкретной формы, ей следует добавить атрибут <strong>data-no-validate</strong></p>
+						</blockquote>
+
+
+
+						<h2>Отправка форм</h2>
+
+
+
+						<p>Для включения функционала следует расскоментировать функцию <strong>flsForms.formSubmit();</strong> в файле <strong>js/app.js</strong></p>
+
+
+
+						<h5>Валидация элементов формы</h5>
+
+
+
+						<p>По умолчанию, при отправке формы, поля отмеченные <strong>data-required/data-required=’…’</strong> будут проходить валидацию. Для отключения валидации элементов конкретной формы, ей следует добавить атрибут <strong>data-no-validate</strong></p>
+
+
+
+						<h5>Режимы отправки формы</h5>
+
+
+
+						<p>В ЧФ существует несколько режимов контроля отправки форм:</p>
+
+
+
+						<ol>
+							<li><strong>Стандартная HTML отправка формы</strong> (по умолчанию) — если валидация пройдена (была включена), форма отправится на указанный в атрибуте action адрес (с переходом страницы), методом указанным в атрибуте method.</li>
+							<li><strong>AJAX отправка формы</strong> — если валидация пройдена (была включена), форма отправится AJAX запросом на указанный в атрибуте action адрес, методом указанным в атрибуте method. Страница не перезагрузится, все элементы формы вернутся к исходных значениям (очистка формы).</li>
+							<li><strong>Режим имитации отправки формы</strong> — если валидация пройдена (была включена), форма никуда не отправится, страница не перезагрузится, все элементы формы вернутся к исходных значениям (очистка формы). Используется для демонстрации работы дополнительных возможностей форм, таких как, например, показ попапа об успешной отправке.</li>
+						</ol>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Для включения режима <strong>AJAX отправки </strong>достаточно добавить форме атрибут <strong>data-ajax</strong>, а если нужен режим <strong>имитации отправки</strong> добавляем атрибут <strong>data-dev</strong>.</p>
+						</blockquote>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-ajax</span> <span class="attribute">class</span>=<span class="value">"form"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">action</span>=<span class="value">"sendmail.php"</span>&gt;</span>
+		...
+	<span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></pre>
+
+
+
+						<h5>Прокрутка к элементу с ошибкой</h5>
+
+
+
+						<p>Бывает, что форма очень большая и, при возникновении ошибки валидации, хорошо бы показать элемент с ошибкой пользователю. Для этих целей есть функционал «прокрутка к элементу с ошибкой». Для включения, достаточно добавить форме атрибут <strong>data-goto-error</strong></p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-goto-error</span> <span class="attribute">class</span>=<span class="value">"form"</span> <span class="attribute">action</span>=<span class="value">"#"</span>&gt;</span>
+		...
+	<span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></pre>
+
+
+
+						<h5>Показ попапа после отправки формы</h5>
+
+
+
+						<p>Если необходимо, после отправки формы, показать попап добавляем к форме атрибут data-popup-message и в качестве значения указываем селектор попапа</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Только для режимов <strong>data-ajax</strong> или <strong>data-dev</strong>. <a href="./funkcional-popup.html" target="_blank" rel="noreferrer noopener">Функционал попапов</a> также должен быть подключен</p>
+						</blockquote>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-dev</span> <span class="attribute">data-popup-message</span>=<span class="value">"#form-message"</span> <span class="attribute">class</span>=<span class="value">"form"</span> <span class="attribute">action</span>=<span class="value">"#"</span>&gt;</span>
+		...
+	<span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></pre>
+
+
+
+						<h2>События</h2>
+
+
+
+						<p>После каждой отправки формы срабатывает событие <strong>formSent</strong>, его можно отловить в любой части кода:</p>
+
+
+
+						<pre class="wp-block-code"><code class="javascript">document.addEventListener(<span class="string">"formSent"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> {</span>
+		<span class="comment">// Форма</span>
+		<span class="keyword">const</span> currentForm= e.detail.form;
+	<span>}</span>);</code></pre>
+
+
+
+						<h2>Расположение и дополнительные данные</h2>
+
+
+
+						<p>Функции <strong>formFieldsInit()</strong>, <strong>formSubmit()</strong> а также объект <strong>formValidate </strong>находятся в файле<strong> js/files/forms/form.js</strong></p>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

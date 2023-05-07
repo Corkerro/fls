@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Работа со шрифтами. Локальные и иконочные шрифты. Подключение из Google Fonts</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-359">
+					<h1 class="article__title title">Работа со шрифтами. Локальные и иконочные шрифты. Подключение из Google Fonts</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>В стартовом шаблоне «Чертоги Фрилансера» v3.0.0 (далее ЧФ) весь процесс подключения локальных и иконочных шрифтов максимально автоматизирован. Исходные файлы шрифтов конвертируются с современные форматы .WOFF и .WOFF2, а также производится запись подключения шрифтов в файл стилей, включая значение font-weight на основе имени файла.</p>
+
+
+
+						<h3 id="как-чф-обрабатывает-шрифты">Как ЧФ обрабатывает шрифты?</h3>
+
+
+
+						<p>При запуске шаблона в любом режиме, ЧФ проверит, есть ли файлы шрифтов в форматах .TTF и/или .OTF в папке src/fonts. </p>
+
+
+
+						<p>Далее происходит три этапа конвертации:</p>
+
+
+
+						<ol>
+							<li>Файлы .OTF (если они есть) конвертируются в .TTF и сохраняются в папке с исходниками src/fonts.</li>
+							<li>Файлы .TTF конвертируются в .WOFF и записываются в папку с результатом (dist/fonts)</li>
+							<li>Файлы .TTF конвертируются в .WOFF2 и записываются в папку с результатом (dist/fonts)</li>
+						</ol>
+
+
+
+						<p>После конвертации ЧФ проверит наличие файла стилей scss/fonts/fonts.scss и, <strong>если его нет</strong>, запишет в него конструкции @font-face для всех файлов, включая значение font-weight основанное на имени файла.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Если файл scss/fonts/fonts.scss уже существует, данные не перезапишутся. Это сделано для того, что если нам придется внести изменения в файл scss/fonts/fonts.scss после работы ЧФ, эти изменения не затерлись.</p>
+						</blockquote>
+
+
+
+						<p><strong>В каких случаях нам потребуется внести изменения в файл scss/fonts/fonts.scss в ручную?</strong> Дело в том, что значение font-weight основывается на имени файла шрифта, то есть если файлы называется Roboto-bold, то значение font-weight будет 700. Но если файл будет назван без отделения начертания, например RobotoBold, то адекватное определение не удастся и будет записано значение по умолчанию (400). И вот в этих случаях нам необходимо отредактировать файл указав адекватные значения.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Если мы хотим перезаписать данные в файле <strong>scss/fonts/fonts.scss</strong>, нам следует его удалить и перезапустить систему, или запустить команду <strong>npm run fonts</strong> (система сама удалит файл и создаст новый)</p>
+						</blockquote>
+
+
+
+						<h3 id="как-подключить-локальные-файлы-шрифтов">Как подключить локальные файлы шрифтов:</h3>
+
+
+
+						<ol>
+							<li>Скачать или получить от дизайнера/заказчика файлы шрифтов в формате .TTF и/или .OTF и положить их в папку <strong>src/fonts</strong> (<strong>если папки нет — создать</strong>)</li>
+							<li>Раскомментировать подключение файла <strong>fonts.scss</strong> (<strong>строка fonts/fonts</strong>) в файле <strong>scss/style.scss</strong></li>
+							<li>Указать семейство шрифта по умолчанию в переменной <strong>$fontFamily</strong> в файле <strong>scss/style.scss</strong></li>
+							<li>Запустить ЧФ в любом режиме</li>
+						</ol>
+
+
+
+						<p>При необходимости, вы можете отредактировать созданный и заполненный файл <strong>scss/fonts/fonts.scss</strong><br>При необходимости пересоздать данные в файле стилей <strong>scss/fonts/fonts.scss</strong> полностью, следует его удалить и перезапустить систему, или запустить команду <strong>npm run fonts</strong> (система сама удалит файл и создаст новый)</p>
+
+
+
+						<h3 id="как-подключить-локальные-файлы-иконочных-шрифтов">Как подключить локальные файлы иконочных шрифтов:</h3>
+
+
+
+						<ol>
+							<li><a rel="noreferrer noopener" href="https://www.youtube.com/watch?v=QYwI3LRCnRE&amp;list=PLM6XATa8CAG6IJvQBkrTTNZmpIcyS2Avk&amp;index=23" target="_blank">Тем или иным способом</a> создать файл иконочного шрифта в формате .TTF и/или .OTF и положить его в папку <strong>src/fonts</strong> (идет работа над автоматизацией этого процесса)</li>
+							<li>Отредактировать файл <strong>scss/fonts/<strong>icons</strong>.scss </strong>внеся классы для иконок, а также убедится в том что имя шрифта (font-family) для SCSS-шаблона <strong>%ic {}</strong> совпадает с тем что указан в файле <strong>scss/fonts/fonts.scss</strong></li>
+							<li>Раскомментировать подключение файла <strong>icons.scss</strong> (<strong>строка fonts/icons</strong>) в файле <strong>scss/style.scss</strong></li>
+							<li>Запустить ЧФ в любом режиме</li>
+						</ol>
+
+
+
+						<h3 id="как-подключить-шрифты-из-google-fonts">Как подключить шрифты из Google Fonts:</h3>
+
+
+
+						<p>Самый простой способ — это воспользоваться плагином для VS Code <a href="https://marketplace.visualstudio.com/items?itemName=lior-chamla.google-fonts" target="_blank" rel="noreferrer noopener">Google Fonts</a></p>
+
+
+
+						<ol>
+							<li>Нажимаем F1 и ищем плагин Google Fonts</li>
+							<li>Если хотим подключить шрифт отдельным тегом link в HTML файл, выбираем <strong>Google Fonts: insert &lt;link&gt;</strong></li>
+							<li>Если хотим подключить шрифт в файл стилей (обычно это <strong>scss/style.scss</strong>), выбираем <strong>Google Fonts: insert CSS @import</strong></li>
+							<li>Из появившегося списка выбираем нужный шрифт, можно воспользоваться поиском</li>
+							<li>После вставки строки подключения следует отредактировать строку оставив только нужные начертания шрифта</li>
+							<li>Также следует добавить к строке подключения флаг &amp;display=swap</li>
+						</ol>
+
+
+
+						<p><em>Пример подключения шрифта Montserrat</em>:</p>
+
+
+
+						<pre class="wp-block-code"><code class="ruby"><span class="variable">@import</span> url(<span class="symbol">https:</span>/<span class="regexp">/fonts.googleapis.com/css</span><span class="number">?f</span>amily=<span class="constant">Montserrat</span><span class="symbol">:</span><span class="number">400</span>,<span class="number">500</span>,<span class="number">800</span>&amp;display=swap);</code></pre>
+
+
+
+						<p>Шрифты подключенные из Google Fonts не должны попадать в папку с результатом (dist), они подгружаются с сервера Google. </p>
+
+
+
+						<p>Также, стоит отметить, что получить строку для подключения шрифта вы можете и без плагина на сайте <a rel="noreferrer noopener" href="https://fonts.google.com/" target="_blank">Google Fonts</a>.</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

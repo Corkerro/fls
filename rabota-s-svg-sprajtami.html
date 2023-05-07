@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Работа с SVG-спрайтами</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-1692">
+					<h1 class="article__title title">Работа с SVG-спрайтами</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>В шаблоне «Чертоги Фрилансера» v3.0.0 есть возможность автоматически создавать SVG-спрайты.
+						</p>
+
+
+
+						<h2 id="создание-svg-спрайта">Создание SVG-спрайта</h2>
+
+
+
+						<p>Для этого следует скопировать отдельные SVG иконки в папку <strong>src/svgicons</strong>
+							(если такой папки нет, нужно её создать). Далее запускаем команду в терминале
+							<strong><code>npm run sprite</code></strong>
+						</p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Создавать SVG-спрайт следует <strong>до</strong> вызова команды
+								<strong><code>npm run dev</code></strong>
+							</p>
+						</blockquote>
+
+
+
+						<p>После выполнения команды отдельные SVG иконки соберутся в единый файл (спрайт)
+							<strong>simg/icons/icons.svg</strong>
+						</p>
+
+
+
+						<p>Если набор отдельных иконок в папке <strong>src/svgicons</strong> изменился, следует
+							повторить команду <strong><code>npm run sprite</code></strong></p>
+
+
+
+						<h2 id="использование-svg-спрайта">Использование SVG-спрайта</h2>
+
+
+
+						<p>Каждой иконке в общем файле (спрайте) будет присвоен уникальный ID состоящий из строки
+							<strong>svg-имя-файла-иконки</strong>. Например, если имя файла отдельной иконки было
+							list.svg то ID будет svg-list. Следовательно, вывести необходимую иконку в нужном месте
+							можно с помощью кода:
+						</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">svg</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">use</span> <span class="attribute">xlink:href</span>=<span class="value">"img/icons/icons.svg#svg-list"</span>&gt;</span><span class="tag">&lt;/<span class="title">use</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">svg</span>&gt;</span></code></pre>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!
+						</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

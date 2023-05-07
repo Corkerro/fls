@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль добавления классов к шапке при прокрутке страницы</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-747">
+					<h1 class="article__title title">Модуль добавления классов к шапке при прокрутке страницы</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Функционал позволяет добавлять класс к тегу header с классом header при прокрутке страницы
+							вниз, а также другой класс при остановке прокрутки. Таким образом, можно добиться эффекта
+							когда при самом скролле вниз шапка не видна, но стоит остановить скролл, как шапка плавно
+							появляется вверху страницы (становится фиксированной). При обратной прокрутке вверх шапка
+							так же остается видна. </p>
+
+
+
+						<p>Класс <strong>_header-scroll</strong> добавляется к шапке при скролле вниз (через указанное
+							кол-во пикселей). <br>При остановке скролла добавляется класс <strong>_header-show</strong>.
+						</p>
+
+
+
+						<h2>Подключение функционала </h2>
+
+
+
+						<p><strong>[JS]</strong> В файле <strong>js/app.js</strong> раскомментировать строку
+							<strong>flsScroll.headerScroll();</strong>
+						</p>
+
+
+
+						<h2>Использование функционала </h2>
+
+
+
+						<p><strong>[HTML]</strong> К тегу header, добавляем HTML-атрибут <strong>data-scroll</strong>, в
+							значении атрибута указываем через какое кол-во прокрученных вниз пикселей нам необходимо
+							добавить класс к header (обычно по высоте шапки, по умолчанию 1px).</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">header</span> <span class="attribute">data-scroll</span>=<span class="value">"120"</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span>
+		...
+		<span class="tag">&lt;/<span class="title">header</span>&gt;</span></code></pre>
+
+
+
+						<p>Теперь как только пользователь прокрутит вниз указанные выше 120px к header добавится
+							технический класс <strong>_header-scroll</strong>. Этот класс будет присутствовать до тех
+							пор, пока пользователь не вернется на самый вверх (не доходя 120px). </p>
+
+
+
+						<p>Результат работы:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">header</span> <span class="attribute">data-scroll</span>=<span class="value">"120"</span> <span class="attribute">class</span>=<span class="value">"header _header-scroll"</span>&gt;</span>
+		...
+		<span class="tag">&lt;/<span class="title">header</span>&gt;</span></code></pre>
+
+
+
+						<p>[<strong>HTML]</strong> Далее к тегу header, добавляем еще один HTML-атрибут
+							<strong>data-scroll-show</strong>. Как только пользователь остановит прокрутку к тегу
+							header, через определенное время, добавится еще один технический класс
+							<strong>_header-show</strong>. Этот класс исчезает только в моменте прокрутке вниз. При
+							прокрутке вверх класс не исчезает.
+						</p>
+
+
+
+						<p>Результат работы: </p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">header</span> <span class="attribute">data-scroll</span>=<span class="value">"120"</span> <span class="attribute">data-scroll-show</span> <span class="attribute">class</span>=<span class="value">"header _header-scroll _header-show"</span>&gt;</span>
+		...
+		<span class="tag">&lt;/<span class="title">header</span>&gt;</span></code></pre>
+
+
+
+						<p>Время задержки добавления класса <strong>_header-show</strong> можно менять. Для это следует
+							указать значение атрибута <strong>data-scroll-show</strong> в миллисекундах (по умолчанию
+							500)</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">header</span> <span class="attribute">data-scroll</span>=<span class="value">"120"</span> <span class="attribute">data-scroll-show</span>=<span class="value">"1000"</span> <span class="attribute">class</span>=<span class="value">"header _header-scroll _header-show"</span>&gt;</span>
+		...
+		<span class="tag">&lt;/<span class="title">header</span>&gt;</span></code></pre>
+
+
+
+						<p>[<strong>SCSS]</strong> Теперь осталось отредактировать свойства этих подключенных классов в
+							scss. Например:</p>
+
+
+
+						<figure class="wp-block-image size-large"><img width="1024" height="521" src="https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-1024x521.jpg" alt="" class="wp-image-780" srcset="https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-1024x521.jpg 1024w, https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-300x152.jpg 300w, https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-768x390.jpg 768w, https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-1536x781.jpg 1536w, https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-2048x1041.jpg 2048w, https://template.fls.guru/wp-content/uploads/2022/01/header_scroll-3-250x127.jpg 250w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+						<h2>Расположение и дополнительные данные </h2>
+
+
+
+						<p>Функционал находится в <strong>js/files/scroll/scroll.js</strong>. Название функции<strong>
+								headerScroll()</strong></p>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!
+						</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>

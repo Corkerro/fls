@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Модуль «Popup». Всплывающие (модальные) окна</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220628130539">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<nav class="header__menu menu">
+					<div class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="../template-docs.html" class="menu__link">Документация</a>
+							</li>
+							<li class="menu__item">
+								<a href="../updates.html" class="menu__link">Обновления</a>
+							</li>
+						</ul>
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a target="_blank" href="https://github.com/Corkerro/flsStartTemplate" class="menu__link">Скачать</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="page">
+			<div class="article__container">
+				<article class="article__item" id="post-532">
+					<h1 class="article__title title">Модуль «Popup». Всплывающие (модальные) окна</h1>
+					<div class="article__info info">
+						<p class="info__category">Категории: <a href="./template-docs.html" rel="category tag">Документация «Чертоги Фрилансера» v3.0.0</a></p>
+					</div>
+					<div class="article__body body-article">
+
+						<p>Данный функционал добавляет возможность использовать всплывающие окна. Работа модуля
+							заключается в следующем: пользователь нажимает на указанный элемент (по умолчанию это
+							атрибут с указанным селектором <strong><span class="has-inline-color has-black-color">data-popup=</span><em><span class="has-inline-color has-black-color">‘selector</span></em>‘</strong>). При
+							этом к тегу <span class="has-inline-color has-black-color"><strong>body
+								</strong></span>добавляется класс&nbsp;<span class="has-inline-color has-black-color"><strong>popup-show</strong></span>. Также
+							блокируется прокрутка страницы (можно отключить), фокусировка элементов «перелетает» на
+							popup, с запоминанием предыдущего сфокусированного элемента на странице. Закрытие popup
+							происходит при клике на кнопку закрытия (по умолчанию элемент с атрибутом
+							<strong>data-close</strong>), по клику на «пустом месте» (не на popup), по нажатию кнопки
+							<strong>ESC</strong>.
+						</p>
+
+
+
+						<h2 id="подключение-функционала">Подключение функционала</h2>
+
+
+
+						<ol>
+							<li><strong>[HTML]</strong> Подключить файл <strong><span class="has-inline-color has-black-color">_popup.htm</span></strong>, после
+								оболочки <strong>wrapper</strong>, в HTML-файл страницы (уже подключен в home.html)</li>
+							<li><strong>[SCSS]</strong> Подключить файл <strong>scss/base/<span class="has-inline-color has-black-color">popup.scss</span> </strong>в файл
+								<strong>scss/<span class="has-inline-color has-black-color">base.scss</span></strong> —
+								раскомментировать сроку <strong>@import ‘base/popup’;</strong>
+							</li>
+							<li><strong>[JS]</strong> Подключить файл <strong>js/libs/<span class="has-inline-color has-black-color">popup.js</span></strong> в файле
+								<strong>js/<span class="has-inline-color has-black-color">app.js</span></strong> —
+								раскомментировать строку <strong>import ‘./libs/popup.js’</strong>
+							</li>
+						</ol>
+
+
+
+						<h2 id="использование-функционала">Использование функционала</h2>
+
+
+
+						<p>Для того, чтобы вызвать попап, необходимо на странице ввести объект с дата-атрибутом, в
+							котором указан селектор (класс или id) всплывающего окна, на которое ссылаемся:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-popup</span>=<span class="value">"#popup"</span> <span class="attribute">class</span>=<span class="value">"link"</span>&gt;</span>Я открываю попап<span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+
+
+
+						<p>Далее открыть файл <strong>html/_popup.htm</strong>, раскомментировать HTML-код подготовки
+							попапа, указать селектор (id или класс) по которому вызывается попап, изменить код под свои
+							нужды.</p>
+
+
+
+						<p><em>В примере попап вызывается по id popup</em>:</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"popup"</span> <span class="attribute">aria-hidden</span>=<span class="value">"true"</span> <span class="attribute">class</span>=<span class="value">"popup"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"popup__wrapper"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"popup__content"</span>&gt;</span>
+					<span class="tag">&lt;<span class="title">button</span> <span class="attribute">data-close</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"popup__close"</span>&gt;</span>Закрыть<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+					<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"popup__text"</span>&gt;</span>
+		
+					<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+				<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<h3 id="открытие-youtube-видео-в-попапе">Открытие YouTube видео в попапе</h3>
+
+
+
+						<p>Для того чтобы открыть видеоролик в попапе, следует добавить к кнопке, которая вызывает
+							попап, атрибут <strong>data-popup-youtube</strong>, а в качестве значения указать код
+							ролика. Также следует указать атрибут <strong>data-popup-youtube-place</strong> для объекта
+							в котором хотим вывести ролик (если атрибут data-popup-youtube-place не будет указан, ролик
+							автоматически появится в объекте с классом <strong>popup__text</strong>):</p>
+
+
+
+						<pre class="wp-block-code"><code class="xml"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">data-popup</span>=<span class="value">"#video"</span> <span class="attribute">data-popup-youtube</span>=<span class="value">"6S5Zw2WuyFE"</span>&gt;</span>Видео<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></pre>
+
+
+
+						<pre class="wp-block-code"><code class="xml"> <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"video"</span> <span class="attribute">aria-hidden</span>=<span class="value">"true"</span> <span class="attribute">class</span>=<span class="value">"popup"</span>&gt;</span>
+			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"popup__wrapper"</span>&gt;</span>
+				<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"popup__content"</span>&gt;</span>
+					<span class="tag">&lt;<span class="title">button</span> <span class="attribute">data-close</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"popup__close"</span>&gt;</span>Закрыть<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+					<span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-youtube-place</span> <span class="attribute">class</span>=<span class="value">"popup__text"</span>&gt;</span>
+		
+					<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+				<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+
+
+
+						<p>Стили попапа можно писать и изменять в файле <strong>scss/base/popup.scss</strong></p>
+
+
+
+						<h3 id="открытие-попапа-по-хешу">Открытие попапа по хешу</h3>
+
+
+
+						<p>Для того чтобы открыть попап при открытии страницы, добавляем к адресу хеш с именем селектора
+							попапа</p>
+
+
+
+						<pre class="wp-block-code"><code class="ruby"><span class="symbol">https:</span>/<span class="regexp">/template.fls.guru/index</span>.html<span class="comment">#popup</span></code></pre>
+
+
+
+						<h2 id="методы-и-события">Методы и события</h2>
+
+
+
+						<h4 id="методы">Методы</h4>
+
+
+
+						<p>Работать с попапом из любого места можно импортировав переменную <strong>flsModules</strong>:
+						</p>
+
+
+
+						<pre class="wp-block-code"><code class="python"><span class="keyword">import</span> { flsModules } <span class="keyword">from</span> <span class="string">"./modules.js"</span>;</code></pre>
+
+
+
+						<p>Далее обратится к классу <strong>popup</strong> и работать с методом, например
+							<strong>open()</strong>
+						</p>
+
+
+
+						<pre class="wp-block-code"><code class="http"><span class="attribute">flsModules.popup.open('#popup')</span></code></pre>
+
+
+
+						<p>где <strong>#popup</strong> селектор попапа</p>
+
+
+
+						<h4 id="события">События</h4>
+
+
+
+						<p>В классе попапов существуют ряд событий:</p>
+
+
+
+						<ol>
+							<li><strong>beforePopupOpen</strong> — сработает перед открытием попапа</li>
+							<li><strong>afterPopupOpen</strong> — сработает после открытия попапа</li>
+							<li><strong>beforePopupClose</strong> — сработает перед закрытием попапа</li>
+							<li><strong>afterPopupClose</strong> — сработает после закрытия попапа</li>
+						</ol>
+
+
+
+						<p>Чтобы работать с событием вешаем прослушку на document</p>
+
+
+
+						<pre class="wp-block-code"><code class="javascript">document.addEventListener(<span class="string">"afterPopupOpen"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> {</span>
+			<span class="comment">// Попап</span>
+			<span class="keyword">const</span> currentPopup = e.detail.popup;
+		});</code></pre>
+
+
+
+						<blockquote class="wp-block-quote">
+							<p>Нашли неточность? Хотите что-то добавить? </p><cite>
+								<p><strong>Пишите комментарий!</strong></p>
+							</cite>
+						</blockquote>
+						<div class="patreon-valid-patron-message">Этот контент вам открыт. Спасибо за поддержку канала!
+						</div>
+					</div>
+				</article>
+			</div>
+		</main>
+		<!--<footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer>-->
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20220628130539"></script>
+</body>
+
+</html>
